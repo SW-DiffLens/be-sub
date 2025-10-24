@@ -1,0 +1,8 @@
+version: '3'
+services:
+  fastapi:
+    image: 414394708720.dkr.ecr.ap-northeast-2.amazonaws.com/difflens-fastapi:latest
+    container_name: fastapi
+    ports:
+      - "8000:8000"
+    restart: always
