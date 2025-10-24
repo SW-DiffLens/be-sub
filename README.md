@@ -1,14 +1,18 @@
-# FastAPI 프로젝트 (AI 서브모듈 포함) 배포 가이드
+# FastAPI 프로젝트 (AI 서브모듈 포함)
 
 이 문서는 FastAPI 프로젝트에서 AI 레포를 서브모듈로 사용하는 경우의 작업, GitHub 반영, Docker 이미지 빌드 및 AWS ECR 업로드 과정을 정리합니다.
 
 ---
 
-## 1. 서브모듈 초기화 및 업데이트
+## 1. 서브모듈 초기화 및 최신화
 
-프로젝트를 처음 클론하거나 AI 서브모듈을 업데이트할 때:
+프로젝트를 처음 클론하거나 서브모듈 업데이트:
 
 ```bash
+# 프로젝트 클론 시
+git clone <repo-url> --recurse-submodules
+
+# 서브모듈 초기화 및 최신화
 git submodule init
 git submodule update
 git pull --recurse-submodules
@@ -18,8 +22,8 @@ git pull --recurse-submodules
 
 ```bash
 git add .
-git commit -m "feat : 자연어 검색 구현"
-git push 
+git commit -m "feat: 서브모듈 업데이트"
+git push origin main
 ```
 
 ---
@@ -67,15 +71,24 @@ docker push <your-ecr-uri>:latest
 
 ---
 
-## 4. 컨테이너 실행 확인
+## 4. 패키지 구조 예시
 
-로컬에서 컨테이너 실행:
-
-```bash
-docker run -p 8000:8000 difflens-fastapi:latest
 ```
-
-브라우저 또는 Postman에서 `http://localhost:8000` 접속하여 FastAPI 정상 동작 확인.
+fastapi-project/
+├─ main.py
+├─ requirements.txt
+├─ app/
+│  ├─ api/
+│  └─ ...
+└─ ai/  # 서브모듈
+   ├─ requirements.txt
+   ├─ src/
+   │  ├─ client.py
+   │  ├─ profile_generator.py
+   │  └─ ...
+   └─ scripts/
+      └─ test_prompts.py
+```
 
 ---
 
@@ -106,6 +119,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
 ---
+
 
 ## 6. 주의 사항
 
