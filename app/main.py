@@ -41,3 +41,12 @@ def root():
             "docs": "/docs"
         }
     }
+
+@app.get("/metrics")
+def metrics():
+    """헬스 체크 및 메트릭 엔드포인트"""
+    return {
+        "status": "ok",
+        "service": "difflens-fastapi",
+        "version": "1.0.0"
+    }
