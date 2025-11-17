@@ -153,9 +153,9 @@ async def search_panels_from_db(
             
             # 필터에서 DB 쿼리 조건 생성
             for key, value in filters.items():
-                # 검색 모드 관련 키는 스킵
+                # 검색 모드 관련 키는 스킵 (DB 컬럼이 아닌 메타데이터 필터)
                 if key in ['limit', 'mode', 'match_strategy', 'allow_null_fields',
-                          'exact_match', 'minimum_match_ratio', 'sort_by']:
+                          'exact_match', 'minimum_match_ratio', 'sort_by', 'similarity_threshold']:
                     continue
                 
                 if value is None:
