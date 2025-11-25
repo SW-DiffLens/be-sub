@@ -37,15 +37,15 @@ except Exception as e:
     traceback.print_exc()
     
     # 폴백: 기본 FastAPI 앱 생성
-    from fastapi import FastAPI
+from fastapi import FastAPI
     app = FastAPI(
         title="DiffLens FastAPI (Fallback)",
         description="AI 모듈을 로드할 수 없습니다",
         version="1.0.0"
     )
-    
-    @app.get("/")
-    def root():
+
+@app.get("/")
+def root():
         return {
             "error": "AI module not available",
             "message": str(e)
