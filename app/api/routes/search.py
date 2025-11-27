@@ -422,19 +422,19 @@ async def natural_search(request: FastNaturalSearch):
         
         if not panel_ids:
             # 검색 결과 없음
-    return FastNaturalSearchResponse(
+            return FastNaturalSearchResponse(
                 accuracy=0.0,
                 panelList=[],
                 accuracyList=[],
                 charts=[ChartFastResult(
-                chartType="bar",
+                    chartType="bar",
                     title="검색 결과 없음",
                     reason="조건에 맞는 패널을 찾을 수 없습니다",
                     xaxis="",
-                yaxis="count",
+                    yaxis="count",
                     panelColumn=""
                 )]
-    )
+            )
 
         # 4. 패널 통계 계산
         stats = await get_panel_stats(panel_ids)
