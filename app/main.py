@@ -44,8 +44,8 @@ except Exception as e:
         version="1.0.0"
     )
 
-    @app.get("/")
-    def root():
+@app.get("/")
+def root():
         return {
             "error": "AI module not available",
             "message": str(e)
