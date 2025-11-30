@@ -315,6 +315,7 @@ git submodule update
 | Repository                                          | Description                           |
 | --------------------------------------------------- | ------------------------------------- |
 | [be-main](https://github.com/SW-DiffLens/be-main)   | 메인 서버 (Spring Boot, JWT 인증)     |
+| [ai](https://github.com/SW-DiffLens/ai)             | 서브모듈 |
 | [fe](https://github.com/SW-DiffLens/fe)             | 프론트엔드 (React, TypeScript, Vite)  |
 
 ---
