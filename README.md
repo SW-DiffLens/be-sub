@@ -149,6 +149,35 @@ be-sub/
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
 
+## Submodule
+
+이 레포지토리는 `ai/` 폴더를 Git 서브모듈로 관리합니다. AI 핵심 로직은 별도 레포지토리([ai](https://github.com/SW-DiffLens/ai))에서 개발되며, 이 레포는 Docker 컨테이너로 패키징하고 배포하기 위한 래퍼 역할을 합니다.
+
+### 서브모듈 초기화 (새로 클론 시)
+
+```bash
+git submodule init
+git submodule update
+```
+
+### 서브모듈 업데이트
+
+```bash
+# 서브모듈 최신화
+git submodule update --remote
+
+# 변경사항 커밋
+git add ai
+git commit -m "chore: AI 서브모듈 업데이트"
+git push
+```
+
+### 서브모듈 포함 클론
+
+```bash
+git clone --recurse-submodules https://github.com/SW-DiffLens/be-sub.git
+```
+
 ## License
 
 이 프로젝트는 한성대학교 기업연계 SW캡스톤디자인 수업에서 진행되었습니다.
